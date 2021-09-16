@@ -3,6 +3,8 @@ package com.company.design;
 import com.company.design.adapter.*;
 import com.company.design.aop.AopBrowser;
 import com.company.design.decorator.*;
+import com.company.design.observer.Button;
+import com.company.design.observer.IButtonListner;
 import com.company.design.proxy.Browser;
 import com.company.design.proxy.BrowserProxy;
 import com.company.design.proxy.IBrowser;
@@ -63,7 +65,7 @@ public class Main {
                     end.set(now - start.get());
                 }
                 );
-        //처음 호출 할 땐 로딩시간 걸리지만 그 후부터 캐시사용해서 로딩시간 없다.
+        처음 호출 할 땐 로딩시간 걸리지만 그 후부터 캐시사용해서 로딩시간 없다.
         aopBrowser.show();
         System.out.println("loading time : "+end.get());
         aopBrowser.show();
@@ -81,8 +83,19 @@ public class Main {
         //a5
         ICar audi5 = new A5(audi,"A5");
         audi5.showPrice();
-
-         */
+        ---------------------------------------------------------------------*/
+        /* Observer 관찰자 : 변화가 생겼을 때, 미리 등록된 다른 클래스에 통보해주는 패턴. event listner
+        Button button = new Button("버튼");
+        button.addListner(new IButtonListner() {
+            @Override
+            public void clickEvent(String event) {
+                System.out.println(event);
+            }
+        });
+        button.click("메세지 전달 : click1");
+        button.click("메세지 전달 : click2");
+        button.click("메세지 전달 : click3");
+        ------------------------------------------------------------------- */
 
     }
     //콘센트
