@@ -2,6 +2,7 @@ package com.company.design;
 
 import com.company.design.adapter.*;
 import com.company.design.aop.AopBrowser;
+import com.company.design.decorator.*;
 import com.company.design.proxy.Browser;
 import com.company.design.proxy.BrowserProxy;
 import com.company.design.proxy.IBrowser;
@@ -67,8 +68,22 @@ public class Main {
         System.out.println("loading time : "+end.get());
         aopBrowser.show();
         System.out.println("loading time : "+end.get());
+        ---------------------------------------------------------------------*/
+        /* 데코레이터 : 기존 뼈대(클래스)는 유지하되, 이후 필요한 형태로 꾸밀 때 사용.
+        ICar audi = new Audi(1000);
+        audi.showPrice();
+        //a3(등급별 가격매기기)
+        ICar audi3 = new A3(audi,"A3");
+        audi3.showPrice();
+        //a4
+        ICar audi4 = new A4(audi,"A4");
+        audi4.showPrice();
+        //a5
+        ICar audi5 = new A5(audi,"A5");
+        audi5.showPrice();
 
          */
+
     }
     //콘센트
     public static void connect(Electronic110v electronic110v){
