@@ -15,6 +15,7 @@ import com.company.design.proxy.IBrowser;
 import com.company.design.singleton.AClazz;
 import com.company.design.singleton.BClazz;
 import com.company.design.singleton.SocketClient;
+import com.company.design.strategy.*;
 
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -124,7 +125,29 @@ public class Main {
         sftpClient.read();
         sftpClient.disconnect();
         --------------------------------------------------------------------- */
+        /* Strategy : 유사한 행위들을 캡슐화하여, 객체의 행위를 바꾸고 싶은 경우 직접 변경이 아닌 전략만 변경하여,
+                      유연하게 확장하는 패턴. 전략에 따라 결과가 변한다.
 
+
+        //기본객체(encoder)와 전략(base64,normal)생성하고.
+        Encoder encoder = new Encoder();
+        EncodingStrategy base64 = new Base64Strategy();
+        EncodingStrategy normal = new NormalStrategy();
+
+        String message = "hello";
+        //사용할 때마다 전략을 세팅한다.기본 encoder객체 자체는 변하지 않는다.
+        encoder.setEncodingStrategy(base64);
+        String base64Result = encoder.getMessage(message);
+        System.out.println(base64Result);
+
+        encoder.setEncodingStrategy(normal);
+        String normalResult = encoder.getMessage(message);
+        System.out.println(normalResult);
+
+        encoder.setEncodingStrategy(new AppendStrategy());
+        String appendResult = encoder.getMessage(message);
+        System.out.println(appendResult);
+        ----------------------------------------------------------------------- */
 
     }
     //콘센트
