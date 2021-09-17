@@ -3,6 +3,10 @@ package com.company.design;
 import com.company.design.adapter.*;
 import com.company.design.aop.AopBrowser;
 import com.company.design.decorator.*;
+import com.company.design.facade.FTP;
+import com.company.design.facade.Reader;
+import com.company.design.facade.SftpClient;
+import com.company.design.facade.Writer;
 import com.company.design.observer.Button;
 import com.company.design.observer.IButtonListner;
 import com.company.design.proxy.Browser;
@@ -96,6 +100,31 @@ public class Main {
         button.click("메세지 전달 : click2");
         button.click("메세지 전달 : click3");
         ------------------------------------------------------------------- */
+        /* Facade : 건물의 앞쪽 정면이란 뜻. 여러 개의 객체와 실제 사용하는 서브 객체 사이에 복잡한 의존관계가 있을 때,
+                    중간에 facade라는 객체를 두고, 여기서 제공하는 interface만을 활용하여 기능을 사용하는 방식.
+        facade를 사용하지 않을 경우 아래처럼 하나하나 연결해주고 끊어주고 해야 한다.
+        FTP ftpClient = new FTP("www.foo.co.kr",22,"/home/etc");
+        ftpClient.connect();
+        ftpClient.moveDirectory();
+        Writer writer = new Writer("text.tmp");
+        writer.fileConnect();
+        writer.write();
+        Reader reader = new Reader("text.tmp");
+        reader.fileConnect();
+        reader.fileRead();
+
+        reader.fileDisconnect();
+        writer.fileDisconnect();
+        ftpClient.disconnect();
+
+        이처럼 각각의 객체에 의존하지 않고 facade 객체를 통해 기능을 제공하도록 할 수 있다.
+        SftpClient sftpClient = new SftpClient("www.foo.co.kr",22,"/home/etc","text.tmp");
+        sftpClient.connect();
+        sftpClient.write();
+        sftpClient.read();
+        sftpClient.disconnect();
+        --------------------------------------------------------------------- */
+
 
     }
     //콘센트
